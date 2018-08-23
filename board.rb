@@ -1,10 +1,9 @@
-require_relative "tile"
+require_relative "tile.rb"
 
 class Board
+  attr_reader :grid
   def self.empty_grid
-    Array.new(9) do
-      Array.new(9) { Tile.new(0) }
-    end
+    Array.new(9) {Array.new(9) { Tile.new(0) }}
   end
 
   def self.from_file(filename)
@@ -29,6 +28,8 @@ class Board
   def []=(pos, value)
     x, y = pos
     tile = grid[x][y]
+    p grid.length
+    puts "The tile is #{tile}"
     tile.value = value
   end
 
@@ -80,6 +81,5 @@ class Board
     (0..8).to_a.map { |i| square(i) }
   end
 
-  private
-  attr_reader :grid
+
 end

@@ -1,6 +1,7 @@
-require_relative "board"
+require_relative "board.rb"
 
 class SudokuGame
+  attr_reader :board
   def self.from_file(filename)
     board = Board.from_file(filename)
     self.new(board)
@@ -74,8 +75,6 @@ class SudokuGame
       val.between?(0, 9)
   end
 
-  private
-  attr_reader :board
 end
 
 
